@@ -1,14 +1,18 @@
 @import url('http://fonts.cdnfonts.com/css/scientific-calculator-lcd');
 
 * {
-    font-family: 'Scientific Calculator LCD'
-}             
+    font-family: 'Scientific Calculator LCD';
+    
+}        
+
 
 .holder {
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    
+
 }
 
 .container {
