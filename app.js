@@ -21,7 +21,7 @@ let display = document.querySelector(".display")
 
 
 let numbers = [one,two,three,four,five,six,seven,eight,nine,zero,dot]
-let operators = [plus,minus,divide,multiply,dot]
+let operators = [plus,minus,divide,multiply]
 
 
 let inputCollection = []
@@ -71,6 +71,7 @@ function getNumber() {
         inputCollection.push(".")
     }
 
+    
     inputNumber = inputCollection.join("")
     console.log(inputNumber)
     display.textContent = inputNumber
@@ -84,24 +85,38 @@ function operate() {
     
     operant = inputNumber
     inputCollection = []
-    console.log(operant)
+    console.log(parseFloat(operant))
 
     if(this == plus) {
         equal.addEventListener('click', event => {
-            computed = parseInt(operant) + parseInt(inputNumber)
+            computed = parseFloat(operant) + parseFloat(inputNumber)
             console.log(computed)
             display.textContent = computed
         })
     }
     else if(this == minus) {
         equal.addEventListener('click', event => {
-            computed = parseInt(operant) - parseInt(inputNumber)
+            computed = parseFLoat(operant) - parseFloat(inputNumber)
             console.log(computed)
             display.textContent = computed
         })
     }
-
+    else if(this == divide) {
+        equal.addEventListener('click', event => {
+            computed = parseFloat(operant) / parseFloat(inputNumber)
+            console.log(computed)
+            display.textContent = computed
+        })
+    }
+    else if(this == multiply) {
+        equal.addEventListener('click', event => {
+            computed = parseFloat(operant) * parseFloat(inputNumber)
+            console.log(computed)
+            display.textContent = computed
+        })
+    }
 }
+
 
 
 
