@@ -26,9 +26,10 @@ let operators = [plus,minus,divide,multiply]
 
 let inputCollection = []
 let inputNumber 
-let operant 
-let computed
-
+let storedInputNumber 
+let computed 
+let operatorTimesClicked = 0
+let currentOperator
 
 
 numbers.forEach(item => {
@@ -73,49 +74,118 @@ function getNumber() {
 
     
     inputNumber = inputCollection.join("")
-    console.log(inputNumber)
+    console.log(`InputNumber ${inputNumber}`)
     display.textContent = inputNumber
 }
 
 
-operators.forEach(item => {item.addEventListener('click', operate)
+operators.forEach(item => {item.addEventListener('click', event => {
+
+    if(this == plus){
+        currentOperator = "add"
+    }
+
+    if(operatorTimesClicked = 0) {
+        operateFirstTime(event.target)
+        operatorTimesClicked ++
+    }
+    else if(operatorTimesClicked > 0) {
+        operateFurther(this)
+        operatorTimesClicked ++
+    }
+})
 })
 
-function operate() {
-    
-    operant = inputNumber
+function operateFirstTime(event) {
+    console.log('FirstTime')
+    storedInputNumber  = inputNumber
     inputCollection = []
-    console.log(parseFloat(operant))
+    console.log((`storedInputNumber ${storedInputNumber}`))
 
-    if(this == plus) {
-        equal.addEventListener('click', event => {
-            computed = parseFloat(operant) + parseFloat(inputNumber)
-            console.log(computed)
-            display.textContent = computed
-        })
-    }
-    else if(this == minus) {
-        equal.addEventListener('click', event => {
-            computed = parseFLoat(operant) - parseFloat(inputNumber)
-            console.log(computed)
-            display.textContent = computed
-        })
-    }
-    else if(this == divide) {
-        equal.addEventListener('click', event => {
-            computed = parseFloat(operant) / parseFloat(inputNumber)
-            console.log(computed)
-            display.textContent = computed
-        })
-    }
-    else if(this == multiply) {
-        equal.addEventListener('click', event => {
-            computed = parseFloat(operant) * parseFloat(inputNumber)
+    if(event.target == plus) {
+        plus.addEventListener('click', event => {
+            computed = parseFloat(storedInputNumber) + parseFloat(inputNumber)
             console.log(computed)
             display.textContent = computed
         })
     }
 }
+
+function operateFurther(){
+    console.log('Further')
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// function operate() {
+
+//     if(computed == 0) {
+//         storedInputNumber  = inputNumber
+//         inputCollection = []
+//         console.log((`storedInputNumber ${storedInputNumber}`))
+
+//         if(this == plus) {
+
+//             plus.addEventListener('click', event => {
+//                     computed = parseFloat(storedInputNumber) + parseFloat(inputNumber)
+//                     console.log(computed)
+//                     display.textContent = computed
+//                 })
+            
+                
+//             }
+//         }
+
+    
+
+//     else if(computed != 0) {
+
+//         if(this == plus) {
+
+//             plus.addEventListener('click', event => {
+//                     computed = parseFloat(computed) + parseFloat(inputNumber)
+//                     console.log(computed)
+//                     display.textContent = computed
+//                 })
+            
+                
+//             }
+//     }
+
+
+
+
+    //     else if(this == minus) {
+//         equal.addEventListener('click', event => {
+//             computed = parseFloat(storedInputNumber) - parseFloat(inputNumber)
+//             console.log(computed)
+//             display.textContent = computed
+//         })
+//     }
+//     else if(this == divide) {
+//         equal.addEventListener('click', event => {
+//             computed = parseFloat(storedInputNumber) / parseFloat(inputNumber)
+//             console.log(computed)
+//             display.textContent = computed
+//         })
+//     }
+//     else if(this == multiply) {
+//         equal.addEventListener('click', event => {
+//             computed = parseFloat(storedInputNumber) * parseFloat(inputNumber)
+//             console.log(computed)
+//             display.textContent = computed
+//         })
+//     }
+    
 
 
 
