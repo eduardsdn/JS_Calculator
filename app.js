@@ -27,7 +27,7 @@ let operators = [plus,minus,divide,multiply]
 let inputCollection = []
 let inputNumber 
 let operant 
-let computed
+let computed 
 
 
 
@@ -87,16 +87,35 @@ function operate() {
     inputCollection = []
     console.log(parseFloat(operant))
 
+    plus.removeEventListener('click', operate)
+
     if(this == plus) {
-        equal.addEventListener('click', event => {
-            computed = parseFloat(operant) + parseFloat(inputNumber)
-            console.log(computed)
-            display.textContent = computed
+
+        plus.addEventListener('click', event => {
+
+            if(typeof computed !== 'number'){
+                computed = parseFloat(operant) + parseFloat(inputNumber)
+                inputCollection = []
+                console.log(computed)
+                display.textContent = computed
+            }
+    
+            else if(typeof computed == 'number') {
+                console.log("Chaining active")
+                computed = parseFloat(computed) + parseFloat(inputNumber)
+                console.log(computed)
+                display.textContent = computed
+            }
+            
+        
         })
+
     }
+
+   
     else if(this == minus) {
-        equal.addEventListener('click', event => {
-            computed = parseFLoat(operant) - parseFloat(inputNumber)
+            equal.addEventListener('click', event => {
+            computed = parseFloat(operant) - parseFloat(inputNumber)
             console.log(computed)
             display.textContent = computed
         })
@@ -116,7 +135,3 @@ function operate() {
         })
     }
 }
-
-
-
-
