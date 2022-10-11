@@ -1,83 +1,58 @@
-@import url('http://fonts.cdnfonts.com/css/scientific-calculator-lcd');
-
-* {
-    font-family: 'Scientific Calculator LCD';
-    
-}        
-
-
-.holder {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    
-
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: 'Montserrat';
+    font-weight: normal;
 }
 
-.container {
-    margin-top: 200px;
-    margin-left:auto;
-    margin-right: auto;
-    border: solid;
-    height: 500px;
-    width: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: rgb(252, 246, 196);
-    border-radius: 20px;
-    padding: 10px;
+body {
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(to right, #00AAFF, #00FF6C);
 }
 
-.clearDelete {
-    display: flex;
-    justify-content: space-around;
-    height: 70px;
-    gap: 10px;
-    padding: 10px;
-    
-}
-
-#deleteBtn {
-    flex-grow: 1;
-    border-radius: 10px;
-    background-color:lightcoral;
-    font-size: 20px;
-}
-
-#clearBtn {
-    flex-grow: 1;
-    border-radius: 10px;
-    background-color: lightblue;
-    font-size: 20px;
-}
-
-
-.calcButtons {
-    padding: 10px;
-    height: 430px;
-    /* border: solid; */
+.calculator-grid {
     display: grid;
-    grid-template-columns: repeat(4, auto);
-    grid-template-rows: repeat(4, auto);
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows:minmax(120px, auto) repeat(5, 100px);
 }
 
-.btn {
-    border-radius: 10px;
-    margin: 3px;
-    font-size: large;
+.calculator-grid > button {
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid white;
+    outline: none;
+    background-color: rgba(255,255,255, .75);
 }
 
+.calculator-grid > button:hover {
+    background-color: rgba(255,255,255, .90)
+}
 
+.span-two {
+    grid-column: span 2;
+}
 
-.display {
-    margin: 10px;
-    border: solid;
-    padding: 30px;
-    background-color: rgb(239, 239, 239);
-    border-radius: 12px;
-    text-align: right;
-    font-size: 25px;
-    
+.output {
+    grid-column: 1/-1;
+    background-color: rgba(0, 0 ,0, .75);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 10px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.output .previous-operand {
+    color: rgba(255,255,255, .75);
+    font-size: 1.5rem;
+}
+
+.output .current-operand {
+    color: white;
+    font-size: 2.5rem;
 }
